@@ -135,7 +135,7 @@ https://drive.google.com/file/d/13XApczkJgGYCa3-sQULLB_Z3K868FW-v/view?usp=share
 
 Github link: 
 
- https://github.com/justineeyx/finBro 
+ https://github.com/justineeyx/finBro-v2
 
 2. Process flowchart
 
