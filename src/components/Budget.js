@@ -10,7 +10,7 @@ import TotalBudgetCard from "./Budget/TotalBudgetCard"
 import { useState } from "react"
 import { UNCATEGORIZED_BUDGET_ID, useBudgets } from "../api/budget"
 
-function App() {
+function Budget() {
   const [showAddBudgetModal, setShowAddBudgetModal] = useState(false)
   const [showAddExpenseModal, setShowAddExpenseModal] = useState(false)
   const [viewExpensesModalBudgetId, setViewExpensesModalBudgetId] = useState()
@@ -87,4 +87,4 @@ function App() {
   )
 }
 
-export default App
+export default Budget

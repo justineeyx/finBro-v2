@@ -33,7 +33,7 @@ export default function AddExpenseModal({
         </Modal.Header>
         <Modal.Body>
           <Form.Group className="mb-3" controlId="description">
-            <Form.Label>Description</Form.Label>
+            <Form.Label>Category</Form.Label>
             <Form.Control ref={descriptionRef} type="text" required />
           </Form.Group>
           <Form.Group className="mb-3" controlId="amount">

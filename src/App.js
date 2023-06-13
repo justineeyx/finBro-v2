@@ -3,18 +3,19 @@ import React from "react";
 import Budget from "./components/Budget";
 // import Login from "./components/Login"
 import "./App.css";
-import { BudgetsProvider } from "./api/budget";
+// import { BudgetsProvider } from "./api/budget";
 
 function App() {
   return (
     <div>
       {/* <Header />
       <Login /> */}
-      <BudgetsProvider>
+      <div>
         <Budget />
-      </BudgetsProvider>
+      </div>
     </div>
   );
 }
 
 export default App;
+
