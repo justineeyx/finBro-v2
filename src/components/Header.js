@@ -13,7 +13,8 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import FinBroLogo from "../finBro_logo.png";
-const pages = ["Dashboard", "Insights"];
+import { Link } from "react-router-dom";
+const pages = ["Budget", "Expense"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 // var bgColor = { "Default":"#00FF00"};
@@ -34,7 +35,6 @@ function Header() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-
 
   return (
     <AppBar position="static" style={{ backgroundColor: "#F8E7C5" }}>
@@ -125,13 +125,18 @@ function Header() {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+
+            {/* Redirect user to new page */}
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "green", display: "block" }}
               >
-                {page}
+                {/* {page} */}
+                
+                {/* Fixed the error of "/Budget/Budget" with this link ==> https://stackoverflow.com/questions/53654151/react-appends-link-to-link-url-to-the-present-path-of-the-component */}
+                <Link to={`/${page}`} style={{ my: 2, color: "green", display: "block", textDecoration: "none"}}>{page}</Link>
               </Button>
             ))}
           </Box>
