@@ -1,3 +1,9 @@
+How to test:
+1. Clone this repository to your desired location
+2. In the terminal, enter "git checkout new-branch"
+3. In your desired IDE, open up the terminal and enter "npm i" to install all dependencies
+4. Enter "npm start" and host the webapp on http://localhost:3000
+
 1.Introduction 
 
 TEAM NAME: 
