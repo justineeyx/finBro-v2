@@ -10,7 +10,7 @@ export default function AddExpenseModal({
   handleClose,
   defaultBudgetId,
 }) {
-  const categoryRef = useRef();
+  const descriptionRef = useRef()
   const amountRef = useRef();
   const budgetIdRef = useRef();
   const { addExpense, budgets } = useBudgets();
@@ -18,7 +18,7 @@ export default function AddExpenseModal({
   function handleSubmit(e) {
     e.preventDefault();
     addExpense({
-      category: categoryRef.current.value,
+      description: descriptionRef.current.value,
       amount: parseFloat(amountRef.current.value),
       budgetId: budgetIdRef.current.value,
     });
@@ -32,17 +32,20 @@ export default function AddExpenseModal({
           <Modal.Title>New Expense</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form.Group className="mb-3" controlId="Category">
-            <Form.Label>Category</Form.Label>
-            {/* <Form.Control ref={categoryRef} type="text" required /> */}
-            <Form.Select defaultValue={defaultBudgetId} ref={budgetIdRef}>
-              <option id={UNCATEGORIZED_BUDGET_ID}>Uncategorized</option>
-              {budgets.map((budget) => (
+          <Form.Group className="mb-3" controlId="description">
+            <Form.Label>Description</Form.Label>
+            <Form.Select ref={descriptionRef}>
+              <option value="Food">Food</option>
+              <option value="Transport">Transport</option>
+              <option value="Shopping">Shopping</option>
+              {/* {budgets.map((budget) => (
                 <option key={budget.id} value={budget.id}>
                   {budget.name}
                 </option>
-              ))}
+              ))} */}
             </Form.Select>
+
+            {/* <Form.Control ref={descriptionRef} type="text" required /> */}
           </Form.Group>
           <Form.Group className="mb-3" controlId="amount">
             <Form.Label>Amount</Form.Label>
