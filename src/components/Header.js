@@ -14,7 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import FinBroLogo from "../finBro_logo.png";
 import { Link } from "react-router-dom";
-const pages = ["Budget", "Expense"];
+const pages = ["Budget", "Insights"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 // var bgColor = { "Default":"#00FF00"};
