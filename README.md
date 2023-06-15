@@ -1,6 +1,6 @@
 How to test:
 1. Clone this repository to your desired location
-2. In the terminal, enter "git checkout new-branch"
+2. In the terminal, enter "git checkout feature-01"
 3. In your desired IDE, open up the terminal and enter "npm i" to install all dependencies
 4. Enter "npm start" and host the webapp on http://localhost:3000
 
