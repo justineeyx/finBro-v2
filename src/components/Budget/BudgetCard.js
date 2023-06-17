@@ -1,5 +1,8 @@
 import { Button, Card, ProgressBar, Stack } from "react-bootstrap"
 import { currencyFormatter } from "../../utils"
+import Alert from '@mui/material/Alert';
+import Layout from '@mui/material/Stack';
+
 export default function BudgetCard({
   name,
   amount,
@@ -8,7 +11,9 @@ export default function BudgetCard({
   hideButtons,
   onAddExpenseClick,
   onViewExpensesClick,
-}) {
+}) 
+{
+
   const classNames = []
   if (amount > max) {
     classNames.push("bg-danger", "bg-opacity-10")
@@ -53,6 +58,9 @@ export default function BudgetCard({
             </Button>
           </Stack>
         )}
+        <Layout sx={{ width: '100%' }} spacing={2}>
+        <Alert severity="error">This is an error alert — check it out!</Alert>
+        </Layout>
       </Card.Body>
     </Card>
   )
