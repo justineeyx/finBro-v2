@@ -1,7 +1,7 @@
-import { Button, Card, ProgressBar, Stack } from "react-bootstrap"
-import { currencyFormatter } from "../../utils"
-import Alert from '@mui/material/Alert';
-import Layout from '@mui/material/Stack';
+import { Button, Card, ProgressBar, Stack } from "react-bootstrap";
+import { currencyFormatter } from "../../utils";
+import Alert from "@mui/material/Alert";
+import Layout from "@mui/material/Stack";
 
 export default function BudgetCard({
   name,
@@ -11,14 +11,27 @@ export default function BudgetCard({
   hideButtons,
   onAddExpenseClick,
   onViewExpensesClick,
-}) 
-{
-
-  const classNames = []
+}) {
+  const classNames = [];
+  const alert = [];
   if (amount > max) {
-    classNames.push("bg-danger", "bg-opacity-10")
+    classNames.push("bg-danger", "bg-opacity-10");
+    alert.push(
+      <Layout sx={{ width: "100%" }} spacing={2} marginTop={2}>
+        <Alert severity="error">Budget Exceeded !</Alert>
+      </Layout>
+    );
+  } else if (amount >= 0.75 * max) {
+    // refer to this link for conditional redering with DOM elemet:
+    // https://stackoverflow.com/questions/50505486/how-to-use-the-reactjs-to-append-dom-elements-with-loop
+    classNames.push("bg-warning", "bg-opacity-10");
+    alert.push(
+      <Layout sx={{ width: "100%" }} spacing={2} marginTop={2}>
+        <Alert severity="warning">Warning, almost exceeding budget !</Alert>
+      </Layout>
+    );
   } else if (gray) {
-    classNames.push("bg-light")
+    classNames.push("bg-light");
   }
 
   return (
@@ -58,17 +71,18 @@ export default function BudgetCard({
             </Button>
           </Stack>
         )}
-        <Layout sx={{ width: '100%' }} spacing={2}>
-        <Alert severity="error">This is an error alert — check it out!</Alert>
-        </Layout>
+        {alert}
+        {/* <Layout sx={{ width: '100%' }} spacing={2}>
+        <Alert severity="warning">Warning, almost exceeding budget!</Alert>
+        </Layout> */}
       </Card.Body>
     </Card>
-  )
+  );
 }
 
 function getProgressBarVariant(amount, max) {
-  const ratio = amount / max
-  if (ratio < 0.5) return "primary"
-  if (ratio < 0.75) return "warning"
-  return "danger"
+  const ratio = amount / max;
+  if (ratio < 0.75) return "success";
+  if (ratio >= 0.75 && ratio < 1) return "warning";
+  return "danger";
 }
