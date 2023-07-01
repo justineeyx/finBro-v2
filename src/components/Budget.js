@@ -21,7 +21,6 @@ function Budget() {
     setShowAddExpenseModal(true)
     setAddExpenseModalBudgetId(budgetId)
   }
-
   return (
     <>
       <Container className="my-4">
