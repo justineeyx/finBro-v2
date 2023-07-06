@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Header from "./Header";
 // import ReactDOM from "react-dom";
-import "../LoginForm.css";
+import "./LoginForm.css";
 
 function Login() {
   // React States
