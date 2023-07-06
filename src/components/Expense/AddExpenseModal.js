@@ -13,6 +13,7 @@ export default function AddExpenseModal({
   const descriptionRef = useRef()
   const amountRef = useRef();
   const budgetIdRef = useRef();
+  const dateRef = useRef();
   const { addExpense, budgets } = useBudgets();
 
   function handleSubmit(e) {
@@ -21,6 +22,7 @@ export default function AddExpenseModal({
       description: descriptionRef.current.value,
       amount: parseFloat(amountRef.current.value),
       budgetId: budgetIdRef.current.value,
+      dateId: dateRef.current.value
     });
     handleClose();
   }
@@ -67,6 +69,13 @@ export default function AddExpenseModal({
                 </option>
               ))}
             </Form.Select>
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Date</Form.Label>
+            <Form.Control
+            ref={dateRef}
+            type="date"
+            required/>
           </Form.Group>
           <div className="d-flex justify-content-end">
             <Button variant="primary" type="submit">
