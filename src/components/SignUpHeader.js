@@ -14,15 +14,14 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import FinBroLogo from "../finBro_logo.png";
 import { Link } from "react-router-dom";
-// import { Settings } from "@mui/icons-material";
-const pages = ["Budget", "Insights"];
-const settings = ["Logout"];
+const pages = ["SignIn"];
+// const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 // var bgColor = { "Default":"#00FF00"};
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  // const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -33,9 +32,9 @@ function Header() {
     setAnchorElNav(null);
   };
 
-  // const handleCloseUserMenu = () => {
-  //   setAnchorElUser(null);
-  // };
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
 
   return (
     <AppBar position="static" style={{ backgroundColor: "#F8E7C5" }}>
@@ -123,7 +122,7 @@ function Header() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            FINBRO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
 
@@ -137,26 +136,39 @@ function Header() {
                 {/* {page} */}
                 
                 {/* Fixed the error of "/Budget/Budget" with this link ==> https://stackoverflow.com/questions/53654151/react-appends-link-to-link-url-to-the-present-path-of-the-component */}
-                <Link to={`/${page}`} style={{ my: 2, color: "green", display: "block", textDecoration: "none"}}>{page}</Link>
+                <Link to={`/`} style={{ my: 2, color: "green", display: "block", textDecoration: "none"}}>{page}</Link>
               </Button>
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 1,marginLeft: 105 ,display: { xs: "none", md: "flex"}}}>
-
-            {/* Redirect user to new page */}
-            {settings.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "green", display: "block"}}
-              >
-                {/* {page} */}
-                
-                {/* Fixed the error of "/Budget/Budget" with this link ==> https://stackoverflow.com/questions/53654151/react-appends-link-to-link-url-to-the-present-path-of-the-component */}
-                <Link to={`/`} style={{ my: 2, color: "green", display: "block", textDecoration: "none"}}>{page}</Link>
-              </Button>
-            ))}
+          <Box sx={{ flexGrow: 0 }}>
+            {/* <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              </IconButton>
+            </Tooltip> */}
+            <Menu
+              sx={{ mt: "45px" }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              {/* {settings.map((setting) => (
+                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{setting}</Typography>
+                </MenuItem>
+              ))} */}
+            </Menu>
           </Box>
         </Toolbar>
       </Container>

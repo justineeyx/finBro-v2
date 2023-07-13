@@ -1,16 +1,18 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState, useEffect } from "react";
 import { auth } from "../firebase";
-import Header from "./Header";
+import SigninHeader from "./SignInHeader";
 import "./LoginForm.css";
 import { useNavigate, Link } from "react-router-dom";
+import Alert from "@mui/material/Alert";
+import Layout from "@mui/material/Stack";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [isLoggedIn, setisLoggedIn] = useState(false);
-
+  const [errorMessages, setErrorMessages] = useState({});
 
   useEffect(() => {
     // Checking if user is loggedIn
@@ -30,12 +32,26 @@ const SignIn = () => {
       })
       .catch((error) => {
         console.log(error);
+        setErrorMessages({
+          name: "unsuccessful",
+          message: "Unable to log in, please verify your email and password",
+        });
       });
   };
 
+  // Generate error message
+  const renderErrorMessage = (name) =>
+    name === errorMessages.name && (
+      <div className="error, bg-error , bg-opacity-10">
+        <Layout sx={{ width: "100%" }} spacing={2} marginTop={2}>
+          <Alert severity="error">{errorMessages.message}</Alert>
+        </Layout>
+      </div>
+    );
+
   return (
     <div>
-      <Header />
+      <SigninHeader />
       <div className="app">
         <div className="login-form">
           <div className="title">Log In</div>
@@ -63,6 +79,7 @@ const SignIn = () => {
                   required
                 ></input>
               </div>
+              {renderErrorMessage("unsuccessful")}
               <div className="button-container">
                 <button type="submit">Log In</button>
                 <p>

@@ -5,7 +5,7 @@ import Insights from "./components/Insights";
 import "./App.css";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
-import AuthDetails from "./components/AuthDetails";
+// import AuthDetails from "./components/AuthDetails";
 
 // import { BudgetsProvider } from "./api/budget";
 import { Route, Routes } from "react-router-dom";
