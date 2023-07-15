@@ -55,7 +55,7 @@ export default function AddExpenseModal({
               ref={amountRef}
               type="number"
               required
-              min={0}
+              min={1}
               step={0.01}
             />
           </Form.Group>
