@@ -24,7 +24,7 @@ export const BudgetsProvider = ({ children }) => {
   }
   function addBudget({ name, max }) {
     setBudgets(prevBudgets => {
-      if (prevBudgets.find(budget => budget.name === name)) {
+      if (prevBudgets.find(budget => budget.name.toLocaleLowerCase() === name.toLocaleLowerCase())) {
         return prevBudgets
       }
       return [...prevBudgets, { id: uuidV4(), name, max }]
