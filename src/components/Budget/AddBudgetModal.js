@@ -32,7 +32,7 @@ export default function AddBudgetModal({ show, handleClose }) {
               ref={maxRef}
               type="number"
               required
-              min={1}
+              min={0.01}
               step={0.01}
             />
           </Form.Group>
