@@ -13,10 +13,6 @@ import { Route, Routes } from "react-router-dom";
 function App() {
   return (
     <>
-      {/* <div className="App"> 
-        <SignUp />
-        <AuthDetails />
-      </div> */}
 
       <Routes>
         <Route path="/" element={<SignIn />} />

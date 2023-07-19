@@ -7,8 +7,13 @@ import BudgetCard from "./Budget/BudgetCard"
 import Header from "./Header"
 import UncategorizedBudgetCard from "./Budget/UncategorizedBudgetCard"
 import TotalBudgetCard from "./Budget/TotalBudgetCard"
-import { useState } from "react"
+//import { useState } from "react"
 import { UNCATEGORIZED_BUDGET_ID, useBudgets } from "../api/budget"
+
+import { useEffect, useState } from "react";
+import { db, auth } from "../firebase";
+import { getDocs, collection, addDoc, deleteDoc, updateDoc, doc } from "firebase/firestore"; 
+
 
 function Budget() {
   const [showAddBudgetModal, setShowAddBudgetModal] = useState(false)
@@ -17,10 +22,72 @@ function Budget() {
   const [addExpenseModalBudgetId, setAddExpenseModalBudgetId] = useState()
   const { budgets, getBudgetExpenses } = useBudgets()
 
-  function openAddExpenseModal(budgetId) {
+  /*function openAddExpenseModal(budgetId) {
     setShowAddExpenseModal(true)
     setAddExpenseModalBudgetId(budgetId)
-  }
+  }*/ 
+
+  const [budgetList, setBudgetList] = useState([]); 
+
+
+    //new budget states 
+    const [newBudgetName, setNewBudgetName] = useState("")
+    const [newBudgetAmt, setNewBudgetAmt] = useState(0)
+    const [newUserID, setNewUserID] = useState("") 
+
+    //update budget amount states 
+    const [updatedAmt, setUpdatedAmt] = useState(0); 
+
+    const budgetCollectionRef = collection(db, "finbrotest"); 
+    
+    const onSubmitBudget = async () => {
+        try {
+        await addDoc(budgetCollectionRef, {
+            budgetName : newBudgetName, 
+            budgetAmt : newBudgetAmt, 
+            userID : auth?.currentUser?.uid, 
+        });
+
+        getBudgetList(); 
+        } catch(err) {
+            console.error(err);
+        }
+    };
+
+
+    const deleteBudget = async (id) => {
+        const budgetDoc = doc(db, "budget", id)
+        await deleteDoc(budgetDoc);
+    };
+
+    const updateBudgetAmt = async(id) => {
+        const budgetDoc = doc(db, "budget", id);
+        await updateDoc(budgetDoc, {amt: updatedAmt});
+    }; 
+
+
+
+    const getBudgetList = async () => {
+        //READ THE DATA 
+        //SET THE BUDGET LIST 
+        try {
+            const data = await getDocs(budgetCollectionRef); 
+            const filteredData = data.docs.map((doc) => ({
+                ...doc.data(), 
+                id: doc.id,
+            })); 
+            setBudgetList({filteredData});
+        } catch (err) {
+            console.error(err); 
+        }
+    }; 
+
+    useEffect(() => {
+        getBudgetList(); 
+    }, []); 
+
+
+
   return (
     <>
       <Container className="my-4">
@@ -30,7 +97,7 @@ function Budget() {
           <Button variant="primary" onClick={() => setShowAddBudgetModal(true)}>
             Add Budget
           </Button>
-          <Button variant="outline-primary" onClick={openAddExpenseModal}>
+          <Button variant="outline-primary" onClick={onSubmitBudget}>
             Add Expense
           </Button>
         </Stack>
