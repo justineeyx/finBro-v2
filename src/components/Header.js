@@ -15,6 +15,8 @@ import AdbIcon from "@mui/icons-material/Adb";
 import FinBroLogo from "../finBro_logo.png";
 import { Link } from "react-router-dom";
 // import { Settings } from "@mui/icons-material";
+import AuthDetails from "./AuthDetails";
+
 const pages = ["Budget", "Insights"];
 const settings = ["Logout"];
 
@@ -107,7 +109,7 @@ function Header() {
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
+          {/* <Typography
             variant="h5"
             noWrap
             component="a"
@@ -124,7 +126,7 @@ function Header() {
             }}
           >
             LOGO
-          </Typography>
+          </Typography> */}
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
 
             {/* Redirect user to new page */}
@@ -143,17 +145,16 @@ function Header() {
           </Box>
 
           <Box sx={{ flexGrow: 1,marginLeft: 105 ,display: { xs: "none", md: "flex"}}}>
-
-            {/* Redirect user to new page */}
+              <AuthDetails/>
+            {/* Redirect user to logout page */}
             {settings.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "green", display: "block"}}
               >
-                {/* {page} */}
+                 {page}
                 
-                {/* Fixed the error of "/Budget/Budget" with this link ==> https://stackoverflow.com/questions/53654151/react-appends-link-to-link-url-to-the-present-path-of-the-component */}
                 <Link to={`/`} style={{ my: 2, color: "green", display: "block", textDecoration: "none"}}>{page}</Link>
               </Button>
             ))}
