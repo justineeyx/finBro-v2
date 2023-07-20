@@ -1,6 +1,6 @@
 import { Form, Modal, Button } from "react-bootstrap"
 import { useRef } from "react"
-import { useBudgets } from "../../api/budget"
+import { useBudgets } from "../../api/budgetFirebase"
 
 export default function AddBudgetModal({ show, handleClose }) {
   const nameRef = useRef()

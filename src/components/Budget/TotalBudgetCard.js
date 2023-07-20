@@ -1,4 +1,4 @@
-import { useBudgets } from "../../api/budget"
+import { useBudgets } from "../../api/budgetFirebase"
 import BudgetCard from "./BudgetCard"
 
 export default function TotalBudgetCard() {

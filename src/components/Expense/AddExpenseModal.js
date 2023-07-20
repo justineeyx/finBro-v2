@@ -3,7 +3,7 @@ import { useRef } from "react";
 import {
   useBudgets,
   UNCATEGORIZED_BUDGET_ID,
-} from "../../api/budget";
+} from "../../api/budgetFirebase";
 
 export default function AddExpenseModal({
   show,
