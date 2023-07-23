@@ -18,7 +18,7 @@ import { Link } from "react-router-dom";
 import AuthDetails from "./AuthDetails";
 
 const pages = ["Budget"];
-const settings = ["Logout"];
+// const settings = ["Logout"];
 
 // var bgColor = { "Default":"#00FF00"};
 
@@ -147,7 +147,7 @@ function Header() {
           <Box sx={{ flexGrow: 1,marginLeft: 105 ,display: { xs: "none", md: "flex"}}}>
               <AuthDetails/>
             {/* Redirect user to logout page */}
-            {settings.map((page) => (
+            {/* {settings.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
@@ -157,7 +157,7 @@ function Header() {
                 
                 <Link to={`/`} style={{ my: 2, color: "green", display: "block", textDecoration: "none"}}>{page}</Link>
               </Button>
-            ))}
+            ))} */}
           </Box>
         </Toolbar>
       </Container>

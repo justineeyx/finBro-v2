@@ -40,6 +40,10 @@ export default function AddExpenseModal({
               <option value="Food">Food</option>
               <option value="Transport">Transport</option>
               <option value="Shopping">Shopping</option>
+              <option value="Travel">Travel</option>
+              <option value="Health">Health</option>
+              <option value="Gift">Gift</option>
+
               {/* {budgets.map((budget) => (
                 <option key={budget.id} value={budget.id}>
                   {budget.name}

@@ -83,7 +83,7 @@ const SignIn = () => {
               <div className="button-container">
                 <button type="submit">Log In</button>
                 <p>
-                  Create an account <Link to={"./SignUp"}>here</Link>
+                 Don't have an account? Click <Link to={"./SignUp"}>here</Link>
                 </p>
               </div>
             </form>

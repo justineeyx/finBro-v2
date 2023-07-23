@@ -2,7 +2,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState, useEffect } from "react";
 import { auth } from "../firebase";
 import "./LoginForm.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import SignUpHeader from "./SignUpHeader";
 import Alert from "@mui/material/Alert";
 import Layout from "@mui/material/Stack";
@@ -82,6 +82,9 @@ const SignUp = () => {
               {renderErrorMessage("unsuccessful")}
               <div className="button-container">
                 <button type="submit">Sign up</button>
+                <p>
+                 Already have an account? Click <Link to={"/"}>here</Link>
+                </p>
               </div>
             </form>
           </div>
