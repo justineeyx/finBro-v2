@@ -1,6 +1,6 @@
 How to test:
 1. Clone this repository to your desired location
-2. In the terminal, enter "git checkout firebase"
+2. In the terminal, enter "git checkout Logout_feature"
 3. In your desired IDE, open up the terminal and enter "npm i" to install all dependencies
 4. Enter "npm start" and host the webapp on http://localhost:3000
 
@@ -10,7 +10,7 @@ TEAM NAME:
 finBRO 
 
 Level of achievement: 
-Apollo 11
+Gemini
 
 
 Motivation: 
