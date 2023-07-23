@@ -22,15 +22,11 @@ function App() {
 
   return (
     <>
-      {/* <div className="App"> 
-        <SignUp />
-        <AuthDetails />
-      </div> */}
-      {isLoggedIn ? (
+      {/* {isLoggedIn ? (
         <button onClick={logOut}>Logout</button>
       ) : (
         <button onClick={logIn}>Login</button>
-      )}
+      )} */}
 
       <Routes>
         <Route path="/" element={<SignIn />} />
