@@ -17,7 +17,7 @@ import { Link } from "react-router-dom";
 // import { Settings } from "@mui/icons-material";
 import AuthDetails from "./AuthDetails";
 
-const pages = ["Budget", "Insights"];
+const pages = ["Budget"];
 const settings = ["Logout"];
 
 // var bgColor = { "Default":"#00FF00"};
