@@ -1,13 +1,25 @@
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "@mui/material/Button";
-import { Stack } from "react-bootstrap";
+import IconButton from "@mui/material/IconButton";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import MenuItem from "@mui/material/MenuItem";
+import Menu from "@mui/material/Menu";
+
 import { auth } from "../firebase";
 
 const AuthDetails = () => {
   const [authUser, setAuthUser] = useState(null);
+  const [anchorEl, setAnchorEl] = React.useState(null);
   const navigate = useNavigate();
+
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
@@ -31,24 +43,42 @@ const AuthDetails = () => {
       .catch((error) => console.log(error));
   };
   return (
-    <>
+    <div>
       {authUser ? (
-        <Stack direction="horizontal" gap="2" className="mx-4">
-          {/* <p style={{ color: "green", my: 20 }}>
-            {`Signed in as ${authUser.email}`}{" "}
-          </p> */}
-
-          <Button
-            onClick={userSignOut}
-            sx={{ my: 2, marginLeft: 2, color: "green", display: "block" }}
+        <>
+          <IconButton
+            size="large"
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={handleMenu}
+            color="inherit"
           >
-            Sign out
-          </Button>
-        </Stack>
+            <AccountCircle />
+          </IconButton>
+          <Menu
+            id="menu-appbar"
+            anchorEl={anchorEl}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            <MenuItem>{`Signed in as ${authUser.email}`}</MenuItem>
+            <MenuItem onClick={userSignOut}>Log Out</MenuItem>
+          </Menu>
+        </>
       ) : (
-        <p style={{ color: "green", flexGrow: 1 }}>Signed out</p>
+        <p style={{ color: "black" }}>Signed out</p>
       )}
-    </>
+    </div>
   );
 };
 

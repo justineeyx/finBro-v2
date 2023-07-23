@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Budget from "./components/Budget";
 // import Login from "./components/Login"
-import Insights from "./components/Insights";
 import "./App.css";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
@@ -12,13 +11,13 @@ import Protected from "./components/Protected";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
-  const [isLoggedIn, setisLoggedIn] = useState(null);
-  const logIn = () => {
-    setisLoggedIn(true);
-  };
-  const logOut = () => {
-    setisLoggedIn(false);
-  };
+  // const [isLoggedIn, setisLoggedIn] = useState(null);
+  // const logIn = () => {
+  //   setisLoggedIn(true);
+  // };
+  // const logOut = () => {
+  //   setisLoggedIn(false);
+  // };
 
   return (
     <>
@@ -31,16 +30,15 @@ function App() {
       <Routes>
         <Route path="/" element={<SignIn />} />
         <Route path="/signUp" element={<SignUp />} />
-        <Route
+        {/* <Route
           path="/Budget"
           element={
             <Protected isLoggedIn={isLoggedIn}>
               <Budget />
             </Protected>
           }
-        />
-        {/* <Route path="/Budget" element={<Budget />} /> */}
-        <Route path="/Insights" element={<Insights />} />
+        /> */}
+        <Route path="/Budget" element={<Budget />} />
       </Routes>
     </>
   );
